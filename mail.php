@@ -10,7 +10,7 @@ if (isset($_POST['youremail'])) {$youremail = $_POST['youremail'];}
 if (isset($_POST['tel443'])) {$tel443 = $_POST['tel443'];}
  
 /* Сюда впишите свою эл. почту */
-$myaddres  = "semenkadjarov@yandex .ru"; // кому отправляем
+$myaddres  = "semenkadjarov@yandex.ru"; // кому отправляем
  
 /* А здесь прописывается текст сообщения, \n - перенос строки */
 $mes = "Тема: Заказ обратного звонка!\nТелефон: $phone\nИмя: $name";
