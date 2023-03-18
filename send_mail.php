@@ -31,10 +31,11 @@
 	$body = str_replace('%date1%', $date1, $body);
 	$body = str_replace('%numberguest%', $numberguest, $body);
 
-    $mail->addAddress("semenkadjarov@yandex.ru");   // Здесь введите Email, куда отправлять
-	$mail->setFrom($email);
-    $mail->Subject = "[Заявка с формы]";
-    $mail->MsgHTML($body);
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'semenkadjarov@yandex.ru'; // Ваш логин от почты с которой будут отправляться письма
+    $mail->Password = 'S89383467537ss'; // Ваш пароль от почты с которой будут отправляться письма
+    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 465; // TCP port to connect to / этот порт может отличаться у других провайдеров
 
     if (!$mail->send()) {
         $message = "Ошибка отправки";
