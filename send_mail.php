@@ -31,6 +31,9 @@
 	$body = str_replace('%date1%', $date1, $body);
 	$body = str_replace('%numberguest%', $numberguest, $body);
 
+
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.yandex.ru';  	
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'semenkadjarov@yandex.ru'; // Ваш логин от почты с которой будут отправляться письма
     $mail->Password = 'S89383467537ss'; // Ваш пароль от почты с которой будут отправляться письма
@@ -47,16 +50,14 @@ $mail->addAddress('mikepe6549@asoflex.com');     // Кому будет уход
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
-    if (!$mail->send()) {
-        $message = "Ошибка отправки";
-    } else {
-        header('location: broni.html');
-    }
-	
-	$response = ["message" => $message];
 
-    header('Content-type: application/json');
-    echo json_encode($response);
+$mail->Subject = 'Заявка с тестового сайта';
+$mail->Body    = '' .$name . ' оставил заявку, его телефон ' .$phone. '<br>Почта этого пользователя: ' .$email;
+$mail->AltBody = '';
 
-
+if(!$mail->send()) {
+    echo 'Error';
+} else {
+    header('location: broni.html');
+}
 ?>
